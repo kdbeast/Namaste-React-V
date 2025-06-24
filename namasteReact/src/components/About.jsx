@@ -17,8 +17,12 @@ class About extends Component {
 
     return (
       <>
-        <h1>About Class Component</h1>
-        <h2>This is Namaste React Web Series</h2>
+        <h1 className="text-center font-bold text-4xl">
+          About Class Component
+        </h1>
+        <h2 className="text-center font-medium text-2xl">
+          This is Namaste React Web Series
+        </h2>
         <UserClass name={"First"} location={"India"} />
       </>
     );
