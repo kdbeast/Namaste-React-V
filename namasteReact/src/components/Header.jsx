@@ -9,7 +9,7 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="flex justify-between bg-amber-500 shadow-lg">
+    <div className="flex justify-between bg-purple-600 shadow-2xl">
       <div className="logo-container">
         <img className="w-56" src={lOGO_URL} alt="logo" />
       </div>
@@ -32,7 +32,7 @@ const Header = () => {
           </li>
           <li className="px-4 text-sm font-bold">Cart</li>
           <button
-            className="border-2 border-solid bg-amber-300 p-1"
+            className="border-2 border-solid bg-amber-400 p-1"
             onClick={() => {
               btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
             }}

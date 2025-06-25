@@ -1,11 +1,18 @@
 const RestaurantCard = (props) => {
   const { resData } = props;
 
-  const { name, cuisines, cloudinaryImageId, avgRating, costForTwo, locality, areaName } =
-    resData.info;
+  const {
+    name,
+    cuisines,
+    cloudinaryImageId,
+    avgRating,
+    costForTwo,
+    locality,
+    areaName,
+  } = resData.info;
 
   return (
-    <div className="m-2 p-4 w-[300px] rounded-lg bg-gray-200 hover:bg-gray-400">
+    <div className="m-2 p-4 w-[300px] rounded-lg bg-purple-400 hover:bg-purple-500">
       <img
         className="rounded-lg"
         alt="res-logo"
@@ -22,5 +29,17 @@ const RestaurantCard = (props) => {
     </div>
   );
 };
+
+// Higher Order Component
+/*export const withPromotedLabel = (RestaurantCard)=>{
+  return (props) => {
+    return (
+      <div>
+        <label>Promoted</label>
+        <RestaurantCard {...props}/>
+      </div>
+    )
+  }
+}*/
 
 export default RestaurantCard;

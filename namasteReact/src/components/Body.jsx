@@ -9,7 +9,7 @@ const Body = () => {
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-  console.log("re-rendered");
+  console.log("Body Rendered");
 
   useEffect(() => {
     fetchData();
@@ -43,7 +43,7 @@ const Body = () => {
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
+    <div className="body bg-amber-300">
       <div className="flex">
         <div className="search m-4 p-4">
           <input
@@ -54,7 +54,7 @@ const Body = () => {
             onChange={(e) => setSearchText(e.target.value)}
           />
           <button
-            className="px-4 py-2 bg-green-200 m-4 rounded-lg cursor-pointer"
+            className="px-4 py-2 bg-purple-500 m-4 rounded-lg cursor-pointer"
             onClick={() => {
               console.log(searchText);
               const filteredRestaurant = listOfRestaurants.filter((res) =>
@@ -68,7 +68,7 @@ const Body = () => {
         </div>
         <div className="flex items-center">
           <button
-            className="px-2 py-2 bg-green-200 m-4 rounded-lg cursor-pointer"
+            className="px-2 py-2 bg-purple-500 m-4 rounded-lg cursor-pointer"
             onClick={() => {
               const filteredList = listOfRestaurants.filter(
                 (res) => res.info.avgRating > 4.5
@@ -87,6 +87,15 @@ const Body = () => {
             key={restaurant.info.id}
             to={`/restaurants/${restaurant.info.id}`}
           >
+            {/* {
+            // Higher Order Component
+              restaurant.data.promoted? (
+                <RestaurantCardPromoted resData={restaurant} />
+              ) : (
+                <RestaurantCard resData={restaurant} />
+              )
+            } */}
+            
             <RestaurantCard resData={restaurant} />
           </Link>
         ))}
