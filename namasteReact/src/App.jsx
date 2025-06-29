@@ -8,6 +8,9 @@ import Error from "./components/Error.jsx";
 import RestaurantMenu from "./components/RestaurantMenu.jsx";
 import { lazy, Suspense, useEffect, useState } from "react";
 import UserContext from "./utils/UserContext.js";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore.js";
+import Cart from "./components/Cart.jsx";
 
 const AppLayout = () => {
   const [userName, setUserName] = useState();
@@ -21,12 +24,14 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-      <div className="app">
-        <Header />
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <div className="app">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -58,11 +63,17 @@ const appRouter = createBrowserRouter([
           </Suspense>
         ),
       },
+
       {
         path: "/restaurants/:resId",
         element: <RestaurantMenu />,
       },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
     ],
+
     errorElement: <Error />,
   },
 ]);
